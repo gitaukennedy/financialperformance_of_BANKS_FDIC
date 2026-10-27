@@ -1,0 +1,13 @@
+Dataset
+Source: Federal Deposit Insurance Corporation (FDIC)
+
+Dataset: FDIC Quarterly Financial Data
+Executive Summary & Project Report
+1. Problem Statement
+In the highly competitive and regulated financial sector, understanding the intricate relationship between bank size, profitability, and operational risk is paramount for strategic planning and risk management. This analysis addresses the challenge of identifying how financial performance metrics—specifically Return on Assets (ROA), Return on Equity (ROE), and Net Interest Margin (NIM)—fluctuate across institutions of varying asset scales, ranging from community banks with under  1Binassetstosystemicallyimportantfinancialinstitutionsexceeding 100B. Furthermore, the project aims to uncover hidden data anomalies, such as structural missingness, zero-capital ratio reporting, and extreme outliers, which can distort financial health assessments and mislead regulatory evaluations if left unmitigated.
+
+2. Methodology
+To resolve these questions, a systematic data analysis pipeline was established utilizing Python's pandas, numpy, seaborn, and matplotlib libraries. The initial phase involved comprehensive data cleaning where empty columns and redundant constant variables (e.g., MSA_NAME, P9LTOT) were identified and isolated. To ensure robust statistical modeling, zero-value capital ratios in the RBCRWAJ column were flagged as reporting anomalies and handled separately as RBCRWAJ_REVIEWED to prevent median distortion. Banks were categorized into segment groups by asset size (<$1B, $1B–$10B, $10B–$100B, >$100B). Profitability metrics and risk profiles (Loan-to-Deposit ratios and Capital ratios) were then subjected to non-parametric Spearman rank correlation and segmented aggregated analyses to map performance patterns across the banking spectrum.
+
+3. Key Analytical Findings
+The empirical analysis yielded several critical insights into the banking dataset's 4,288 institutions. First, a clear non-linear trend emerged in profitability: mid-sized banks ( 1B– 10B) achieved the highest operational efficiency with a peak median ROA of 1.22%, while the largest institutions (>$100B) posted the lowest median ROA (1.16%) but captured the highest median ROE (12.14%), indicating aggressive leverage strategies. Second, Net Interest Margins systematically compressed as bank size increased, falling from a median of 3.86% for small banks to 3.11% for mega-banks. Lastly, the Spearman correlation heatmap revealed a strong positive relationship between ROA and ROE (0.86), while confirming a notable negative correlation (-0.45) between Loan-to-Deposit ratios and capital reserves, emphasizing the fundamental trade-off banks face between aggressive lending and capital safety buffers.
